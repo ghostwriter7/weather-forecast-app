@@ -6,11 +6,14 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
         .when('/', { 
             templateUrl: 'views/main.html',
         })
-        .when('/about', {
-            templateUrl: 'views/about.html',
+        .when('/forecast', {
+            templateUrl: 'views/forecast.html',
+        })
+        .when('/not-found', {
+            templateUrl: 'views/not-found.html'
         })
         .otherwise({
-            redirectTo: '/'
+            redirectTo: '/not-found'
         });
 
     $locationProvider.html5Mode(true); 
