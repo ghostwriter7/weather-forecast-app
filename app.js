@@ -22,10 +22,18 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
     $locationProvider.hashPrefix('');
 }]);
 
-myApp.controller('mainController', ['$scope', function($scope) {
+myApp.controller('mainController', ['$scope', 'forecastService', function($scope, forecastService) {
+    $scope.city = '';
 
+    $scope.$watch('city', function() {
+        forecastService.city = $scope.city;   
+    });
 }]);
 
-myApp.controller('forecastController', ['$scope', function($scope) {
+myApp.controller('forecastController', ['$scope', 'forecastService', function($scope, forecastService) {
+    $scope.city = forecastService.city;
+}]);
 
+myApp.service('forecastService', [function() {
+    this.city = '';
 }]);
